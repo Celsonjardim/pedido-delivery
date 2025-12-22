@@ -1,7 +1,6 @@
 package br.com.delivery.pedido_delivery.cliente.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AccessLevel;
@@ -17,6 +16,8 @@ import java.util.UUID;
 @Entity
 public class Cliente {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "idCliente", updatable = false, unique = true, nullable = false)
     private UUID idCliente;
     @NotBlank
     private String nomeCompleto;
@@ -36,7 +37,6 @@ public class Cliente {
 
     public Cliente(String nomeCompleto, String email, String celular,
                    String cpf, Sexo sexo, EnderecoCliente enderecoCliente) {
-        this.idCliente = UUID.randomUUID();
         this.nomeCompleto = nomeCompleto;
         this.email = email;
         this.celular = celular;
