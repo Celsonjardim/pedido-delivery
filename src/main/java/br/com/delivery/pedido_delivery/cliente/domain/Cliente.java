@@ -30,6 +30,7 @@ public class Cliente {
     private String cpf;
     private Sexo sexo;
     @NotBlank
+    @Embedded
     private EnderecoCliente enderecoCliente;
 
     private LocalDateTime dataDoCadastro;
