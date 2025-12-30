@@ -1,5 +1,6 @@
 package br.com.delivery.pedido_delivery.cliente.application.api;
 
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,5 +9,5 @@ import org.springframework.web.bind.annotation.*;
 public interface ClienteApi {
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    ClienteResponse postCliente(@RequestBody ClienteRequest clienteRequest);
+    ClienteResponse postCliente(@Valid @RequestBody ClienteRequest clienteRequest);
 }
