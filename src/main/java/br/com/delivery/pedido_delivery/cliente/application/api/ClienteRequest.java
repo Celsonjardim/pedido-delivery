@@ -1,10 +1,11 @@
 package br.com.delivery.pedido_delivery.cliente.application.api;
 
-import br.com.delivery.pedido_delivery.cliente.domain.EnderecoCliente;
+import br.com.delivery.pedido_delivery.cliente.domain.EnderecoClienteRequest;
 import br.com.delivery.pedido_delivery.cliente.domain.Sexo;
-import jakarta.persistence.Embedded;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Value;
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -20,8 +21,8 @@ public class ClienteRequest {
     @CPF
     private String cpf;
     private Sexo sexo;
-    @NotBlank
-    @Embedded
-    private EnderecoCliente enderecoCliente;
+    @NotNull
+    @Valid
+    private EnderecoClienteRequest enderecoCliente;
 
 }
