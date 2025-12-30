@@ -1,5 +1,6 @@
 package br.com.delivery.pedido_delivery.cliente.domain;
 
+import br.com.delivery.pedido_delivery.cliente.application.api.ClienteRequest;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -36,14 +37,13 @@ public class Cliente {
     private LocalDateTime dataDoCadastro;
     private LocalDateTime dataUltimaAlterecao;
 
-    public Cliente(String nomeCompleto, String email, String celular,
-                   String cpf, Sexo sexo, EnderecoClienteRequest enderecoCliente) {
-        this.nomeCompleto = nomeCompleto;
-        this.email = email;
-        this.celular = celular;
-        this.cpf = cpf;
-        this.sexo = sexo;
-        this.enderecoCliente = enderecoCliente;
+    public Cliente(ClienteRequest clienteRequest) {
+        this.nomeCompleto = clienteRequest.getNomeCompleto();
+        this.email = clienteRequest.getEmail();
+        this.celular = clienteRequest.getCelular();
+        this.cpf = clienteRequest.getCpf();
+        this.sexo = clienteRequest.getSexo();
+        this.enderecoCliente = clienteRequest.getEnderecoCliente();
         this.dataDoCadastro = LocalDateTime.now();
     }
 }
