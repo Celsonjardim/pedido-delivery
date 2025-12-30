@@ -31,13 +31,13 @@ public class Cliente {
     private Sexo sexo;
     @NotBlank
     @Embedded
-    private EnderecoCliente enderecoCliente;
+    private EnderecoClienteRequest enderecoCliente;
 
     private LocalDateTime dataDoCadastro;
     private LocalDateTime dataUltimaAlterecao;
 
     public Cliente(String nomeCompleto, String email, String celular,
-                   String cpf, Sexo sexo, EnderecoCliente enderecoCliente) {
+                   String cpf, Sexo sexo, EnderecoClienteRequest enderecoCliente) {
         this.nomeCompleto = nomeCompleto;
         this.email = email;
         this.celular = celular;
