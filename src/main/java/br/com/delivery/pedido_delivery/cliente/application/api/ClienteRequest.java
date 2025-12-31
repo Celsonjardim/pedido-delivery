@@ -1,8 +1,7 @@
 package br.com.delivery.pedido_delivery.cliente.application.api;
 
-import br.com.delivery.pedido_delivery.cliente.domain.EnderecoClienteRequest;
+import br.com.delivery.pedido_delivery.cliente.domain.EnderecoCliente;
 import br.com.delivery.pedido_delivery.cliente.domain.Sexo;
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -22,7 +21,6 @@ public class ClienteRequest {
     private String cpf;
     private Sexo sexo;
     @NotNull
-    @Valid
-    private EnderecoClienteRequest enderecoCliente;
+    private EnderecoCliente enderecoCliente;
 
 }

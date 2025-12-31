@@ -1,10 +1,12 @@
 package br.com.delivery.pedido_delivery.cliente.domain;
 
+import jakarta.persistence.Embeddable;
 import jakarta.validation.constraints.NotBlank;
-import lombok.Value;
+import lombok.Data;
 
-@Value
-public class EnderecoClienteRequest {
+@Embeddable
+@Data
+public class EnderecoCliente {
     @NotBlank
     private String rua;
     @NotBlank
