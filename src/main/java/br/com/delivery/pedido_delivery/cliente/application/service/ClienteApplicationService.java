@@ -1,5 +1,6 @@
 package br.com.delivery.pedido_delivery.cliente.application.service;
 
+import br.com.delivery.pedido_delivery.cliente.application.api.ClienteListResponse;
 import br.com.delivery.pedido_delivery.cliente.application.api.ClienteRequest;
 import br.com.delivery.pedido_delivery.cliente.application.api.ClienteResponse;
 import br.com.delivery.pedido_delivery.cliente.application.repository.ClienteRepository;
@@ -7,6 +8,8 @@ import br.com.delivery.pedido_delivery.cliente.domain.Cliente;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @Log4j2
@@ -22,5 +25,12 @@ public class ClienteApplicationService implements ClienteService {
         return ClienteResponse.builder()
                 .idCliente(cliente.getIdCliente())
                 .build();
+    }
+
+    @Override
+    public List<ClienteListResponse> buscaTodosClientes() {
+        log.info("[start] ClienteApplicationService - buscaTodosClientes");
+        log.info("[finish] ClienteApplicationService - buscaTodosClientes");
+        return List.of();
     }
 }
