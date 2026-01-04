@@ -28,6 +28,6 @@ public class ClienteInfraRepository implements ClienteRepository {
         log.info("[start] ClienteInfraRepository - buscaTodosClientes");
         List<Cliente> todosClientes = clienteSpringDataJPARepository.findAll();
         log.info("[finish] ClienteInfraRepository - buscaTodosClientes");
-        return List.of();
+        return todosClientes;
     }
 }
