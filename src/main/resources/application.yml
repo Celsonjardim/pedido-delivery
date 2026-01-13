@@ -13,3 +13,9 @@ spring:
     console:
       enabled: true
       path: /h2-console
+
+  spring:
+  jackson:
+    mapper:
+      sort-properties-alphabetically: false
+
