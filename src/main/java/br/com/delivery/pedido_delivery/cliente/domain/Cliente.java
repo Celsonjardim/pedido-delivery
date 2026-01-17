@@ -1,7 +1,6 @@
 package br.com.delivery.pedido_delivery.cliente.domain;
 
 import br.com.delivery.pedido_delivery.cliente.application.api.ClienteRequest;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
