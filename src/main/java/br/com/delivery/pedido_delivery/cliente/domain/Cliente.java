@@ -1,5 +1,6 @@
 package br.com.delivery.pedido_delivery.cliente.domain;
 
+import br.com.delivery.pedido_delivery.cliente.application.api.ClienteAlteracaoRequest;
 import br.com.delivery.pedido_delivery.cliente.application.api.ClienteRequest;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -48,5 +49,13 @@ public class Cliente {
         this.sexo = clienteRequest.getSexo();
         this.enderecoCliente = clienteRequest.getEnderecoCliente();
         this.dataDoCadastro = LocalDateTime.now();
+    }
+
+    public void Altera(ClienteAlteracaoRequest clienteRequest) {
+        this.nomeCompleto = clienteRequest.getNomeCompleto();
+        this.celular = clienteRequest.getCelular();
+        this.sexo = clienteRequest.getSexo();
+        this.enderecoCliente = clienteRequest.getEnderecoCliente();
+        this.dataUltimaAlterecao = LocalDateTime.now();
     }
 }
