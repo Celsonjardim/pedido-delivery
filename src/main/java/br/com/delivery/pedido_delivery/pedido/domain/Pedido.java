@@ -1,6 +1,5 @@
 package br.com.delivery.pedido_delivery.pedido.domain;
 
-import br.com.delivery.pedido_delivery.cliente.domain.Cliente;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -21,14 +20,12 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private UUID idPedido;
-    @NotNull
-    private Cliente cliente;
     @NotBlank
     private BigDecimal valorDoPedido;
     @Enumerated(EnumType.STRING)
     private StatusPedido statusDoPeido;
     @NotNull
-    @Embedded
+    @OneToMany
     private List<ItemPedido> itensDoPedido;
 
     private LocalDateTime dataDoPedido;
