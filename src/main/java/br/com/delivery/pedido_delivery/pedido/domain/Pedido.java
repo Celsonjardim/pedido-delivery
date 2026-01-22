@@ -7,7 +7,6 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -18,10 +17,9 @@ import java.util.UUID;
 public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
     private UUID idPedido;
     @NotBlank
-    private BigDecimal valorDoPedido;
+    private String valorDoPedido;
     @Enumerated(EnumType.STRING)
     private StatusPedido statusDoPeido;
     @NotNull

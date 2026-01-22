@@ -1,15 +1,17 @@
 package br.com.delivery.pedido_delivery.pedido.domain;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.Value;
 
-import java.math.BigDecimal;
 import java.util.UUID;
 
 @Entity
-@Data
+@Value
 public class ItemPedido {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,7 +19,7 @@ public class ItemPedido {
     @NotBlank
     private String nomeProduto;
     @NotNull
-    private Integer quantidade;
+    private String quantidade;
     @NotNull
-    private BigDecimal precoUnitario;
+    private String precoUnitario;
 }
