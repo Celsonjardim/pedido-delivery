@@ -1,9 +1,6 @@
 package br.com.delivery.pedido_delivery.pedido.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Value;
@@ -22,4 +19,10 @@ public class ItemPedido {
     private String quantidade;
     @NotNull
     private String precoUnitario;
+    @ManyToOne
+    @JoinColumn(name = "idPedido")
+    private Pedido pedido;
+
+    public void setPedido(Pedido pedido) {
+    }
 }
