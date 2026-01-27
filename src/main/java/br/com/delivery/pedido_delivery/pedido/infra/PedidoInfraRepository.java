@@ -6,6 +6,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.UUID;
+
 @Repository
 @Log4j2
 @RequiredArgsConstructor
@@ -18,5 +21,12 @@ public class PedidoInfraRepository implements PedidoRepository {
         pedidoSprinDataJPARepository.save(pedido);
         log.info("[finish] PedidoInfraRepository - salvaPedido");
         return pedido;
+    }
+
+    @Override
+    public List<Pedido> buscaPedidosDoClienteComID(UUID idCliente) {
+        log.info("[start] PedidoInfraRepository - buscaPedidosDoClienteComID");
+        log.info("[finish] PedidoInfraRepository - buscaPedidosDoClienteComID");
+        return List.of();
     }
 }

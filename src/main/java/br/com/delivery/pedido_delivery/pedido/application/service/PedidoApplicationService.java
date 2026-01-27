@@ -34,7 +34,8 @@ public class PedidoApplicationService implements PedidoService {
     public List<PedidoClienteListResponse> buscaPedidosDoClienteComID(UUID idCliente) {
         log.info("[start] PedidoApplicationService - buscaPedidosDoClienteComID");
         clienteService.buscaClienteAtravesId(idCliente);
+        List<Pedido> pedidoDoCliente = pedidoRepository.buscaPedidosDoClienteComID(idCliente);
         log.info("[finish] PedidoApplicationService - buscaPedidosDoClienteComID");
-        return List.of();
+        return PedidoClienteListResponse.converte(pedidoDoCliente);
     }
 }
