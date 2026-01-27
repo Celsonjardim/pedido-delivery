@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -13,4 +14,8 @@ public interface PedidoAPI {
     @ResponseStatus(code = HttpStatus.CREATED)
     PedidoResponse postPedido(@PathVariable("idCliente") UUID idCliente,
                               @Valid @RequestBody PedidoRequest PedidoRequest);
+
+    @GetMapping
+    @ResponseStatus(code = HttpStatus.OK)
+    List<PedidoClienteListResponse> getPedidosDoCliente(@PathVariable UUID idCliente);
 }
