@@ -28,7 +28,8 @@ public class PedidoController implements PedidoAPI {
     public List<PedidoClienteListResponse> getPedidosDoCliente(UUID idCliente) {
         log.info("[start] PedidoController - getPedidosDoCliente");
         log.info("[idCliente] {}", idCliente);
+        List<PedidoClienteListResponse> pedidosDoCliente = pedidoService.buscaPedidosDoClienteComID(idCliente);
         log.info("[finish] PedidoController - getPedidosDoCliente");
-        return List.of();
+        return pedidosDoCliente;
     }
 }

@@ -2,6 +2,7 @@ package br.com.delivery.pedido_delivery.pedido.application.service;
 
 import br.com.delivery.pedido_delivery.cliente.application.service.ClienteService;
 import br.com.delivery.pedido_delivery.pedido.application.api.PedidoAPI;
+import br.com.delivery.pedido_delivery.pedido.application.api.PedidoClienteListResponse;
 import br.com.delivery.pedido_delivery.pedido.application.api.PedidoRequest;
 import br.com.delivery.pedido_delivery.pedido.application.api.PedidoResponse;
 import br.com.delivery.pedido_delivery.pedido.domain.Pedido;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -26,5 +28,13 @@ public class PedidoApplicationService implements PedidoService {
         Pedido pedido = pedidoRepository.salvaPedido(new Pedido(idCliente, pedidoRequest));
         log.info("[finish] PedidoApplicationService - criaPedido");
         return new PedidoResponse(pedido.getIdPedido());
+    }
+
+    @Override
+    public List<PedidoClienteListResponse> buscaPedidosDoClienteComID(UUID idCliente) {
+        log.info("[start] PedidoApplicationService - buscaPedidosDoClienteComID");
+        clienteService.buscaClienteAtravesId(idCliente);
+        log.info("[finish] PedidoApplicationService - buscaPedidosDoClienteComID");
+        return List.of();
     }
 }
