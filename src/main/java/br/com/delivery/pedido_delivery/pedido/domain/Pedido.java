@@ -1,6 +1,7 @@
 package br.com.delivery.pedido_delivery.pedido.domain;
 
 import br.com.delivery.pedido_delivery.pedido.application.api.PedidoRequest;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
@@ -12,6 +13,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
@@ -29,6 +31,7 @@ public class Pedido {
     private StatusPedido statusDoPeido;
     @NotNull
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<ItemPedido> itensDoPedido;
 
     private LocalDateTime dataDoPedido;
@@ -38,7 +41,11 @@ public class Pedido {
         this.idClientePedido = idCliente;
         this.valorDoPedido = pedidoRequest.getValorDoPedido();
         this.statusDoPeido = pedidoRequest.getStatusDoPeido();
-        this.itensDoPedido = pedidoRequest.getItensDoPedido();
+        this.itensDoPedido = pedidoRequest.getItensDoPedido()
+                .stream()
+                .map(item -> {item.setPedido(this);
+                return item;
+                }).collect(Collectors.toList());
         this.dataDoPedido = LocalDateTime.now();
     }
 
