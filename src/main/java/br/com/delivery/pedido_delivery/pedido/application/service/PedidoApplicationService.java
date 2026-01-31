@@ -1,10 +1,7 @@
 package br.com.delivery.pedido_delivery.pedido.application.service;
 
 import br.com.delivery.pedido_delivery.cliente.application.service.ClienteService;
-import br.com.delivery.pedido_delivery.pedido.application.api.PedidoAPI;
-import br.com.delivery.pedido_delivery.pedido.application.api.PedidoClienteListResponse;
-import br.com.delivery.pedido_delivery.pedido.application.api.PedidoRequest;
-import br.com.delivery.pedido_delivery.pedido.application.api.PedidoResponse;
+import br.com.delivery.pedido_delivery.pedido.application.api.*;
 import br.com.delivery.pedido_delivery.pedido.domain.Pedido;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -37,5 +34,13 @@ public class PedidoApplicationService implements PedidoService {
         List<Pedido> pedidoDoCliente = pedidoRepository.buscaPedidosDoClienteComID(idCliente);
         log.info("[finish] PedidoApplicationService - buscaPedidosDoClienteComID");
         return PedidoClienteListResponse.converte(pedidoDoCliente);
+    }
+
+    @Override
+    public PedidoClienteDetalhadoResponse buscaPedidoDoClienteComID(UUID idCliente, UUID idPedido) {
+        log.info("[start] PedidoApplicationService - buscaPedidoDoClienteComID");
+        clienteService.buscaClienteAtravesId(idCliente);
+        log.info("[finish] PedidoApplicationService - buscaPedidoDoClienteComID");
+        return null;
     }
 }
