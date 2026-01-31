@@ -8,4 +8,5 @@ import java.util.UUID;
 public interface PedidoRepository {
     Pedido salvaPedido(Pedido pedido);
     List<Pedido> buscaPedidosDoClienteComID(UUID idCliente);
+    Pedido buscaPedidoPeloId(UUID idPedido);
 }
