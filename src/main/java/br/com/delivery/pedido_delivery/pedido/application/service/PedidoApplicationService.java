@@ -44,4 +44,13 @@ public class PedidoApplicationService implements PedidoService {
         log.info("[finish] PedidoApplicationService - buscaPedidoDoClienteComID");
         return new PedidoClienteDetalhadoResponse(pedido);
     }
+
+    @Override
+    public void deletaPedidoDoClienteComID(UUID idCliente, UUID idPedido) {
+        log.info("[start] PedidoApplicationService - deletaPedidoDoClienteComID");
+        clienteService.buscaClienteAtravesId(idCliente);
+        Pedido pedido = pedidoRepository.buscaPedidoPeloId(idPedido);
+        pedidoRepository.deletaPedido(pedido);
+        log.info("[finish] PedidoApplicationService - deletaPedidoDoClienteComID");
+    }
 }

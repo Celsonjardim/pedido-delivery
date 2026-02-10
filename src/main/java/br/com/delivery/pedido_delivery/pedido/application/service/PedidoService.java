@@ -13,4 +13,5 @@ public interface PedidoService {
     PedidoResponse criaPedido(UUID idCliente, @Valid PedidoRequest pedidoRequest);
     List<PedidoClienteListResponse> buscaPedidosDoClienteComID(UUID idCliente);
     PedidoClienteDetalhadoResponse buscaPedidoDoClienteComID(UUID idCliente, UUID idPedido);
+    void deletaPedidoDoClienteComID(UUID idCliente, UUID idPedido);
 }

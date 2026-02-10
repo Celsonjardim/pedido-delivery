@@ -21,5 +21,11 @@ public interface PedidoAPI {
 
     @GetMapping(value = "/{idPedido}")
     @ResponseStatus(code = HttpStatus.OK)
-    PedidoClienteDetalhadoResponse getPedidoDoClienteComID(@PathVariable UUID idCliente, @PathVariable UUID idPeido);
+    PedidoClienteDetalhadoResponse getPedidoDoClienteComID(@PathVariable UUID idCliente, @PathVariable UUID idPedido);
+
+    @DeleteMapping(value = "/{idPedido}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void deletaPedidoDoClienteComID(@PathVariable UUID idCliente, @PathVariable UUID idPedido);
+
+
 }
