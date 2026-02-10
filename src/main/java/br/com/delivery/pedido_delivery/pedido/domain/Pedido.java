@@ -1,5 +1,6 @@
 package br.com.delivery.pedido_delivery.pedido.domain;
 
+import br.com.delivery.pedido_delivery.pedido.application.api.PedidoAlteracaoRequest;
 import br.com.delivery.pedido_delivery.pedido.application.api.PedidoRequest;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -54,4 +55,15 @@ public class Pedido {
         this.itensDoPedido.add(item);
     }
 
+    public void altera(PedidoAlteracaoRequest pedidoRequest) {
+        this.valorDoPedido = pedidoRequest.getValorDoPedido();
+        this.statusDoPeido = pedidoRequest.getStatusDoPeido();
+        this.itensDoPedido.clear();
+        this.itensDoPedido.addAll(pedidoRequest.getItensDoPedido()
+                .stream()
+                .map(item -> {item.setPedido(this);
+                    return item;
+                }).collect(Collectors.toList()));
+        this.dataUltimaAlterecao = LocalDateTime.now();
+    }
 }

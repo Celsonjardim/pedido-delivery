@@ -49,4 +49,12 @@ public class PedidoController implements PedidoAPI {
         pedidoService.deletaPedidoDoClienteComID(idCliente, idPedido);
         log.info("[finish] PedidoController - deletaPedidoDoClienteComID");
     }
+
+    @Override
+    public void patchPedido(UUID idCliente, UUID idPedido, PedidoAlteracaoRequest pedidoAlteracaoRequest) {
+        log.info("[start] PedidoController - patchPedido");
+        log.info("[idCliente] {} - [idPedido] {}", idCliente, idPedido);
+        pedidoService.alteraPedidoDoClienteComId(idCliente, idPedido, pedidoAlteracaoRequest);
+        log.info("[finish] PedidoController - patchPedido");
+    }
 }

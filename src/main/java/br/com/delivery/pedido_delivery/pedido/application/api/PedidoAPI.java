@@ -12,7 +12,7 @@ import java.util.UUID;
 public interface PedidoAPI {
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    PedidoResponse postPedido(@PathVariable("idCliente") UUID idCliente,
+    PedidoResponse postPedido(@PathVariable UUID idCliente,
                               @Valid @RequestBody PedidoRequest PedidoRequest);
 
     @GetMapping
@@ -27,5 +27,9 @@ public interface PedidoAPI {
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void deletaPedidoDoClienteComID(@PathVariable UUID idCliente, @PathVariable UUID idPedido);
 
+    @PatchMapping(value = "/{idPedido}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void patchPedido(@PathVariable UUID idCliente, @PathVariable UUID idPedido,
+                               @Valid @RequestBody PedidoAlteracaoRequest pedidoAlteracaoRequest);
 
 }
