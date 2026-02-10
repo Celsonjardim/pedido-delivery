@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.UUID;
 
-public interface PedidoSprinDataJPARepository extends JpaRepository<Pedido, UUID> {
+public interface PedidoSpringDataJPARepository extends JpaRepository<Pedido, UUID> {
     @EntityGraph(attributePaths = "itensDoPedido")
     List<Pedido> findByIdClientePedido(UUID idClientePedido);
 }
