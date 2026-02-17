@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -21,5 +22,14 @@ public class EntregaController implements EntregaAPI {
         EntregaResponse entrega = entregaService.criaEntrega(idCliente, idPedido, entregaRequest);
         log.info("[finish] EntregaController - postEntrega");
         return entrega;
+    }
+
+    @Override
+    public List<EntregasListResponse> getTodasEntrega(UUID idCliente, UUID idPedido) {
+        log.info("[start] EntregaController - getTodasEntrega");
+        log.info("[idPedido] {}",  idPedido);
+        List<EntregasListResponse> entregasDoCliente = entregaService.buscaTodasEntregas(idCliente, idPedido);
+        log.info("[finish] EntregaController - getTodasEntrega");
+        return entregasDoCliente;
     }
 }
