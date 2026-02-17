@@ -7,5 +7,5 @@ import java.util.List;
 import java.util.UUID;
 
 public interface EntregaSpringDataJPARepository extends JpaRepository<Entrega, UUID> {
-    List<Entrega> findByIdEntrega(UUID idPedidoEntrega);
+    List<Entrega> findByIdPedidoEntrega(UUID idPedidoEntrega);
 }

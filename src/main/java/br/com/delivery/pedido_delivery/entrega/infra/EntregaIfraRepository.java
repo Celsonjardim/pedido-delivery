@@ -26,7 +26,7 @@ public class EntregaIfraRepository implements EntregaRepository {
     @Override
     public List<Entrega> buscaTodasEntregas(UUID idCliente, UUID idPedido) {
         log.info("[start] EntregaIfraRepository - buscaTodasEntregas");
-        var entregas = entregaSpringDataJPARepository.findByIdEntrega(idPedido);
+        var entregas = entregaSpringDataJPARepository.findByIdPedidoEntrega(idPedido);
         log.info("[finish] EntregaIfraRepository - buscaTodasEntregas");
         return entregas;
     }

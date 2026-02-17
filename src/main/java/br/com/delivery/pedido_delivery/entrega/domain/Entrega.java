@@ -21,7 +21,9 @@ public class Entrega {
     @Column(name = "idEntrega", updatable = false, unique = true, nullable = false)
     private UUID idEntrega;
     @NotNull
-    private UUID idPedidoEntreda;
+    private UUID idClienteEntrega;
+    @NotNull
+    private UUID idPedidoEntrega;
     @NotNull
     @Embedded
     private EnderecoEntrega enderecoDaEntrega;
@@ -36,7 +38,8 @@ public class Entrega {
     private LocalDateTime dataUltimaAlterecao;
 
     public Entrega(UUID idCliente, UUID idPedido, @Valid EntregaRequest entregaRequest) {
-        this.idPedidoEntreda = idPedido;
+        this.idClienteEntrega = idCliente;
+        this.idPedidoEntrega = idPedido;
         this.enderecoDaEntrega = entregaRequest.getEnderecoDaEntrega();
         this.statusEntrega = entregaRequest.getStatusEntrega();
         this.dataEnvio = entregaRequest.getDataEnvio();
