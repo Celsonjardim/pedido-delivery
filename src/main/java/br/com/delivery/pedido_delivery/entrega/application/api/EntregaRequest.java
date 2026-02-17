@@ -9,16 +9,16 @@ import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.NotNull;
 import lombok.Value;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Value
 public class EntregaRequest {
     @Enumerated(EnumType.STRING)
     private StatusEntrega statusEntrega;
     @Column(name = "data_envio")
-    private LocalDateTime dataEnvio;
+    private LocalDate dataEnvio;
     @Column(name = "data_entrega")
-    private LocalDateTime dataEntrega;
+    private LocalDate dataEntrega;
     @NotNull
     @Embedded
     private EnderecoEntrega enderecoDaEntrega;
