@@ -1,4 +1,4 @@
-package br.com.delivery.pedido_delivery.pedido.application.service;
+package br.com.delivery.pedido_delivery.pedido.application.repository;
 
 import br.com.delivery.pedido_delivery.pedido.domain.Pedido;
 

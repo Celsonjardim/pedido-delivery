@@ -2,6 +2,7 @@ package br.com.delivery.pedido_delivery.pedido.application.service;
 
 import br.com.delivery.pedido_delivery.cliente.application.service.ClienteService;
 import br.com.delivery.pedido_delivery.pedido.application.api.*;
+import br.com.delivery.pedido_delivery.pedido.application.repository.PedidoRepository;
 import br.com.delivery.pedido_delivery.pedido.domain.Pedido;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

@@ -1,7 +1,7 @@
 package br.com.delivery.pedido_delivery.pedido.infra;
 
 import br.com.delivery.pedido_delivery.handler.APIException;
-import br.com.delivery.pedido_delivery.pedido.application.service.PedidoRepository;
+import br.com.delivery.pedido_delivery.pedido.application.repository.PedidoRepository;
 import br.com.delivery.pedido_delivery.pedido.domain.Pedido;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
