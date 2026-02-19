@@ -1,5 +1,6 @@
 package br.com.delivery.pedido_delivery.entrega.domain;
 
+import br.com.delivery.pedido_delivery.entrega.application.api.EntregaAlteracaoRequest;
 import br.com.delivery.pedido_delivery.entrega.application.api.EntregaRequest;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
@@ -47,4 +48,11 @@ public class Entrega {
         this.dataDoCadastro = LocalDateTime.now();
     }
 
+    public void altera(EntregaAlteracaoRequest entregaRequest) {
+        this.enderecoDaEntrega = entregaRequest.getEnderecoDaEntrega();
+        this.statusEntrega = entregaRequest.getStatusEntrega();
+        this.dataEnvio = entregaRequest.getDataEnvio();
+        this.dataEntrega = entregaRequest.getDataEntrega();
+        this.dataUltimaAlterecao = LocalDateTime.now();
+    }
 }

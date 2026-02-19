@@ -1,9 +1,6 @@
 package br.com.delivery.pedido_delivery.entrega.application.service;
 
-import br.com.delivery.pedido_delivery.entrega.application.api.EntregaDetalhadoResponse;
-import br.com.delivery.pedido_delivery.entrega.application.api.EntregaRequest;
-import br.com.delivery.pedido_delivery.entrega.application.api.EntregaResponse;
-import br.com.delivery.pedido_delivery.entrega.application.api.EntregasListResponse;
+import br.com.delivery.pedido_delivery.entrega.application.api.*;
 import br.com.delivery.pedido_delivery.entrega.domain.Entrega;
 import br.com.delivery.pedido_delivery.pedido.application.service.PedidoService;
 import jakarta.validation.Valid;
@@ -54,5 +51,15 @@ public class EntregaApplicationService implements EntregaService {
         Entrega entrega = entregaRepository.buscaEntregaDoCliente(idEntrega);
         entregaRepository.deletaEntrega(entrega);
         log.info("[finish] EntregaApplicationService - deletaEntregaDoClienteComID");
+    }
+
+    @Override
+    public void alteraEntregaDoClienteComID(UUID idCliente, UUID idPedido, UUID idEntrega, EntregaAlteracaoRequest entregaAlteracaoRequest) {
+        log.info("[start] EntregaApplicationService - alteraEntregaDoClienteComID");
+        pedidoService.buscaPedidoDoClienteComID(idCliente, idPedido);
+        Entrega entrega = entregaRepository.buscaEntregaDoCliente(idEntrega);
+        entrega.altera(entregaAlteracaoRequest);
+        entregaRepository.salvaEntrega(entrega);
+        log.info("[finish] EntregaApplicationService - alteraEntregaDoClienteComID");
     }
 }

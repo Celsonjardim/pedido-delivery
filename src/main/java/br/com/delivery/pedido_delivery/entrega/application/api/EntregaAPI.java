@@ -32,4 +32,11 @@ public interface EntregaAPI {
     void deleteEntregaDoClienteComID(@PathVariable UUID idCliente,
                                                       @PathVariable UUID idPedido,
                                                       @PathVariable UUID idEntrega);
+
+    @PatchMapping(value = "/{idEntrega}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void patchAlteraEntrega(@PathVariable UUID idCliente,
+                                       @PathVariable UUID idPedido,
+                                       @PathVariable UUID idEntrega,
+                                       @Valid @RequestBody EntregaAlteracaoRequest entregaAlteracaoRequest);
 }
