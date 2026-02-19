@@ -18,7 +18,7 @@ public class EntregaController implements EntregaAPI {
     @Override
     public EntregaResponse postEntrega(UUID idCliente, UUID idPedido, @Valid EntregaRequest entregaRequest) {
         log.info("[start] EntregaController - postEntrega");
-        log.info("[idPedido] {}",  idPedido);
+        log.info("[idCliente] {} - [idPedido] {}", idCliente, idPedido);
         EntregaResponse entrega = entregaService.criaEntrega(idCliente, idPedido, entregaRequest);
         log.info("[finish] EntregaController - postEntrega");
         return entrega;
@@ -27,9 +27,18 @@ public class EntregaController implements EntregaAPI {
     @Override
     public List<EntregasListResponse> getTodasEntrega(UUID idCliente, UUID idPedido) {
         log.info("[start] EntregaController - getTodasEntrega");
-        log.info("[idPedido] {}",  idPedido);
+        log.info("[idCliente] {} - [idPedido] {}", idCliente, idPedido);
         List<EntregasListResponse> entregasDoCliente = entregaService.buscaTodasEntregas(idCliente, idPedido);
         log.info("[finish] EntregaController - getTodasEntrega");
         return entregasDoCliente;
+    }
+
+    @Override
+    public EntregaDetalhadoResponse getEntregaDoClienteComID(UUID idCliente, UUID idPedido, UUID idEntrega) {
+        log.info("[start] EntregaController - getEntregaDoClienteComID");
+        log.info("[idCliente] {} - [idPedido] {} - [idEntrega] {}", idCliente, idPedido, idEntrega);
+        EntregaDetalhadoResponse entrega = entregaService.buscaEntregaDoClienteComID(idCliente, idPedido, idEntrega);
+        log.info("[finish] EntregaController - getEntregaDoClienteComID");
+        return entrega;
     }
 }

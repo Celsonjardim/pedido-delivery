@@ -1,5 +1,6 @@
 package br.com.delivery.pedido_delivery.entrega.application.service;
 
+import br.com.delivery.pedido_delivery.entrega.application.api.EntregaDetalhadoResponse;
 import br.com.delivery.pedido_delivery.entrega.application.api.EntregaRequest;
 import br.com.delivery.pedido_delivery.entrega.application.api.EntregaResponse;
 import br.com.delivery.pedido_delivery.entrega.application.api.EntregasListResponse;
@@ -35,5 +36,14 @@ public class EntregaApplicationService implements EntregaService {
         List<Entrega> todasEntregas = entregaRepository.buscaTodasEntregas(idCliente, idPedido);
         log.info("[finish] EntregaApplicationService - buscaTodasEntregas");
         return EntregasListResponse.converte(todasEntregas);
+    }
+
+    @Override
+    public EntregaDetalhadoResponse buscaEntregaDoClienteComID(UUID idCliente, UUID idPedido, UUID idEntrega) {
+        log.info("[start] EntregaApplicationService - buscaEntregaDoClienteComID");
+        pedidoService.buscaPedidoDoClienteComID(idCliente, idPedido);
+        Entrega entrega = entregaRepository.buscaEntregaDoCliente(idEntrega);
+        log.info("[finish] EntregaApplicationService - buscaEntregaDoClienteComID");
+        return new EntregaDetalhadoResponse(entrega);
     }
 }
