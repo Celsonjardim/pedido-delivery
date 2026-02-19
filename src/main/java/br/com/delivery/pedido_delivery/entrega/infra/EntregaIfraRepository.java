@@ -37,8 +37,16 @@ public class EntregaIfraRepository implements EntregaRepository {
     public Entrega buscaEntregaDoCliente(UUID idEntrega) {
         log.info("[start] EntregaIfraRepository - buscaEntregaDoCliente");
         var entrega = entregaSpringDataJPARepository.findById(idEntrega)
-                .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Entrega não encontrada para esse idEntrega " + idEntrega));
+                .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND,
+                        "Entrega não encontrada para esse idEntrega " + idEntrega));
         log.info("[finish] EntregaIfraRepository - buscaEntregaDoCliente");
         return entrega;
+    }
+
+    @Override
+    public void deletaEntrega(Entrega entrega) {
+        log.info("[start] EntregaIfraRepository - deletaEntrega");
+        entregaSpringDataJPARepository.delete(entrega);
+        log.info("[finish] EntregaIfraRepository - deletaEntrega");
     }
 }

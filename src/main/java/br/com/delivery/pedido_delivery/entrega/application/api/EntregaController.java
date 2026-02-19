@@ -41,4 +41,12 @@ public class EntregaController implements EntregaAPI {
         log.info("[finish] EntregaController - getEntregaDoClienteComID");
         return entrega;
     }
+
+    @Override
+    public void deleteEntregaDoClienteComID(UUID idCliente, UUID idPedido, UUID idEntrega) {
+        log.info("[start] EntregaController - deleteEntregaDoClienteComID");
+        log.info("[idCliente] {} - [idPedido] {} - [idEntrega] {}", idCliente, idPedido, idEntrega);
+        entregaService.deletaEntregaDoClienteComID(idCliente, idPedido, idEntrega);
+        log.info("[finish] EntregaController - deleteEntregaDoClienteComID");
+    }
 }

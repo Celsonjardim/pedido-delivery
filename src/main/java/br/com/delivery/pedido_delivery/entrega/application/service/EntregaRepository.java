@@ -11,4 +11,5 @@ public interface EntregaRepository {
     Entrega salvaEntrega(Entrega entrega);
     List<Entrega> buscaTodasEntregas(UUID idCliente, UUID idPedido);
     Entrega buscaEntregaDoCliente(UUID idEntrega);
+    void deletaEntrega(Entrega entrega);
 }

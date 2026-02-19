@@ -1,6 +1,5 @@
 package br.com.delivery.pedido_delivery.entrega.application.api;
 
-import br.com.delivery.pedido_delivery.pedido.application.api.PedidoClienteDetalhadoResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -27,4 +26,10 @@ public interface EntregaAPI {
     EntregaDetalhadoResponse getEntregaDoClienteComID(@PathVariable UUID idCliente,
                                                             @PathVariable UUID idPedido,
                                                             @PathVariable UUID idEntrega);
+
+    @DeleteMapping(value = "/{idEntrega}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void deleteEntregaDoClienteComID(@PathVariable UUID idCliente,
+                                                      @PathVariable UUID idPedido,
+                                                      @PathVariable UUID idEntrega);
 }
