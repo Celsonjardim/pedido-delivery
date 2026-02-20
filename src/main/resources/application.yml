@@ -19,3 +19,6 @@ spring:
     mapper:
       sort-properties-alphabetically: false
 
+springdoc:
+  swagger-ui:
+    path: /swagger
