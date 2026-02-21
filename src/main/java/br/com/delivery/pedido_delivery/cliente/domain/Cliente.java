@@ -33,6 +33,7 @@ public class Cliente {
     @CPF
     @Column(unique = true)
     private String cpf;
+    @Enumerated(EnumType.STRING)
     private Sexo sexo;
     @NotNull
     @Embedded
