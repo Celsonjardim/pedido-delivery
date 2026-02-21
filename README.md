@@ -42,4 +42,3 @@ Entrega
 📖 Observações
 - O design dos atributos das entidades é livre e pode ser ajustado conforme necessidade.
 - Não há frontend, apenas APIs RESTful.
-- A documentação completa está disponível via Swagger.
