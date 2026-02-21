@@ -92,7 +92,7 @@ src/main/java/br/com/ekan/desafioekan
 ### Pré-requisitos
 - JDK 17 instalado
 - Maven instalado
-- 
+
 ## Passos para execução
 
 1. Clone o repositório
