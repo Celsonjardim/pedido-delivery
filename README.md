@@ -1,17 +1,33 @@
-API REST - Castro de Cliente, Pedido e Entrega
+# API REST - Cadastro de Cliente, Pedido e Entrega
 
-Este projeto é uma aplicação Java com Spring Boot que expõe endpoints REST para gerenciar clientes, pedidos e entregas
+API REST desenvolvida com Spring Boot para gerenciamento de clientes, pedidos e entregas, seguindo arquitetura em camadas e boas práticas de desenvolvimento.
 
-📌 Tecnologias Utilizadas
-Java 17
-Spring Boot 4.0.1
-Spring Web
-Spring Data JPA
-Banco embarcado H2
-Lombok
-Swagger OpenAPI
-________________________________________________________________________________________________________________________
-📂 Estrutura do Projeto
+## 📌 Tecnologias Utilizadas
+- Java 17
+- Spring Boot 
+- Spring Web
+- Spring Data JPA
+- Banco H2 (em memória)
+- Lombok
+- Swagger OpenAPI
+  
+---
+
+## 🏗 Arquitetura
+
+O projeto segue o padrão de arquitetura em camadas:
+
+- **API** → Camada de exposição REST (Controllers)
+- **Service** → Regras de negócio
+- **Repository** → Acesso a dados (JPA)
+- **Domain** → Entidades e DTOs
+- **Infra** → Configurações
+- **Handler** → Tratamento global de exceções
+
+---
+
+## 📂 Estrutura do Projeto
+```
 src/main/java/br/com/ekan/desafioekan
 │
 ├── cliente
@@ -36,96 +52,108 @@ src/main/java/br/com/ekan/desafioekan
 │ └── service              # Regras de negócio de pedido
 │
 └── handler                # Tratamento global de exceções
-______________________________________________________________________________________________________
+```
+---
 
-🗄 Modelo de Dados
-Relacionamento:
-Um pedido obrigatoriamente precisa ter um cliente e um cliente pode ter vários pedidos.
-Uma entrega obrigatoriamente necessita estar vinculada a um pedido.
+## 📌 Modelo de Dados
 
-Cliente
+- Um Cliente pode ter vários Pedidos
+- Um Pedido pertence a um único Cliente
+- Um Pedido possui uma Entrega
+- Uma Entrega está vinculada a um Pedido
 
-id
-nome
-email
-celular
-cpf
-sexo
-endereco
+### Cliente
+- id (UUID)
+- nome
+- email
+- celular
+- cpf
+- sexo
+- endereco
 
-Entrega
+### Pedido
+- id (UUID)
+- valor
+- status
+- itens
+- cliente (Relacionamento)
 
-id
-endereco
-status
-data do envio
-data da entrega
-id_clienteEntreha (FK)
-id_pedidoEntrega (FK)
+### Entrega
+- id (UUID)
+- endereco
+- status
+- dataEnvio
+- dataEntrega
+- pedido (Relacionamento)
+---
 
-Pedido
+## ▶ Como Executar o Projeto
 
-id
-valor do pedido
-status
-itens
-id_clientePedido (FK)
-___________________________________________________________________________________
-
-🚀 Executando o Projeto
-Pré-requisitos
+### Pré-requisitos
 - JDK 17 instalado
 - Maven instalado
-- Banco de dados H2 configurado
+- 
+## Passos para execução
 
-  
-Passos para execução
+1. Clone o repositório
+```
+https://github.com/Celsonjardim/pedido-delivery.git
+```
+2. Abra o projeto no IntelliJ
+3. Execute a classe `PedidoDeliveryApplication`
+4. Acesse:
 
-- Clone o repositório: https://github.com/Celsonjardim/pedido-delivery.git
-- Compile e rode a aplicação: mvn spring-boot:run
-- A Plicação estara disponiel em: http://localhost:8080/pedido-delivery/api/swagger
-_____________________________________________________________________________________
+Swagger:
+```
+http://localhost:8080/pedido-delivery/api/swagger
+```
+
+H2 Console:
+```
+http://localhost:8080/pedido-delivery/api/h2-console
+```
+---
 📡 Endpoints
 
-Cliente
+### Cliente
+
+| Método | Endpoint | Descrição |
+|--------|----------|-----------|
 - POST /api/clientes → Criar cliente
 - GET /api/clientes → Listar clientes
 - GET /api/clientes/{id} → Consultar cliente por ID
 - PUT /api/clientes/{id} → Atualizar cliente
 - DELETE /api/clientes/{id} → Deletar cliente
   
-Pedido
+### Pedido
+
+| Método | Endpoint | Descrição |
+|--------|----------|-----------|
 - POST /api/pedidos → Criar pedido
 - GET /api/pedidos → Listar pedidos
 - GET /api/pedidos/{id} → Consultar pedido por ID
 - PUT /api/pedidos/{id} → Atualizar pedido
 - DELETE /api/pedidos/{id} → Deletar pedido
   
-Entrega
+### Entrega
+
+| Método | Endpoint | Descrição |
+|--------|----------|-----------|
 - POST /api/entregas → Criar entrega
 - GET /api/entregas → Listar entregas
 - GET /api/entregas/{id} → Consultar entrega por ID
 - PUT /api/entregas/{id} → Atualizar entrega
 - DELETE /api/entregas/{id} → Deletar entrega
-_____________________________________________________________________________________________
+---
 
-🛠 Banco de Dados (H2)
-Console H2:
+## 📌 Status do Projeto
 
-http://localhost:8080/pedido-delivery/api/console
-Configurações:
+✔ Projeto concluído para fins de estudo e portfólio.
 
-JDBC URL: jdbc:h2:mem:demodb
-User: sa
-Password: (em branco)
-___________________________________________________________________________________________
+---
 
-📜 Documentação Swagger
-Após iniciar a aplicação, acessar:
+## 👨‍💻 Autor
 
-http://localhost:8080/pedido-delivery/api/swagger
-___________________________________________________________________________________________
-
-👨‍💻 Autor
-Desenvolvido por Celson Jardim
-📧 Email: celsonjardim.dev@outlook.com 📌 GitHub: Celsonjardim
+Desenvolvido por **Celson Jardim**  
+📧 celsonjardim.dev@outlook.com  
+📌 GitHub: https://github.com/Celsonjardim
